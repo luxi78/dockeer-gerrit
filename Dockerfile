@@ -1,11 +1,11 @@
 FROM openjdk:8-jre
-MAINTAINER Martin Lu <luxi78@gmail.com>
+MAINTAINER SCM-DEPT <scm@letv.cn>
 
-RUN apt-get update && \                                                                                                │    container_name: phpldapadmin
-    apt-get upgrade -y && \                                                                                            │    environment:
-    apt-get install -y apt-utils && \                                                                                  │      PHPLDAPADMIN_LDAP_HOSTS: "openldap"
-    apt-get install -y git openssh-server supervisor tmux net-tools vim && \                                           │      PHPLDAPADMIN_HTTPS: "false"
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*                       
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y apt-utils && \
+    apt-get install -y git openssh-server supervisor tmux net-tools vim && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN echo "Create user/group gerrit2" &&  \
     groupadd -g 1000 -r gerrit2 && \
@@ -13,6 +13,6 @@ RUN echo "Create user/group gerrit2" &&  \
 
 WORKDIR /tmp    
 
-VOLUME ["/gerrit_site", "/gerrit_site/git"]
+VOLUME ["/gerrit_site/git", "/gerrit_site/cache", "/gerrit_site/index", "/gerrit_site/logs", "/gerrit_site/tmp"]
 
-expose 8080
+expose 8080 29418
