@@ -1,5 +1,5 @@
 FROM openjdk:8-jre
-MAINTAINER SCM-DEPT <scm@letv.cn>
+MAINTAINER SCM-DEPT <scm@letv.com>
 
 RUN apt-get update && \
     apt-get upgrade -y && \
