@@ -10,6 +10,9 @@ RUN apt-get update && \
 RUN echo "Create user/group gerrit2" &&  \
     groupadd -g 1000 -r gerrit2 && \
     useradd -u 1000 --create-home -r -g gerrit2 gerrit2
+    printf "ServerAliveCountMax 1\nServerAliveInterval 30\nExitOnForwardFailure yes\n" >> /etc/ssh/ssh_config && \
+    printf "GatewayPorts yes\nClientAliveInterval 30\nClientAliveCountMax 1\nPort 80\n" >> /etc/ssh/sshd_config
+
 
 WORKDIR /tmp    
 
