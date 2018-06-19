@@ -4,7 +4,7 @@ MAINTAINER SCM-DEPT <scm@letv.cn>
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y apt-utils && \
-    apt-get install -y git openssh-server supervisor tmux net-tools vim && \
+    apt-get install -y git openssh-server supervisor tmux net-tools vim sudo && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN echo "Create user/group gerrit2" &&  \
